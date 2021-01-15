@@ -1,0 +1,43 @@
+
+<div class="container">   
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="../assets/images/login.png" id="icon" class="logostyle" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="userLogin" (ngSubmit)="Save(userLogin)">
+        <input type="text" formControlName="uname" class="form-control" 
+        placeholder="Enter Username" 
+        [class.is-valid]="userLogin.controls.uname.valid"
+        [class.is-invalid]="!userLogin.controls.uname.valid && userLogin.controls.uname.touched">    
+        <div class="invalid-feedback">*Please Enter Username</div>
+         <!-- <div class="alert alert-danger" *ngIf="userLogin.controls.uname.hasError('required') 
+         && userLogin.controls.uname.touched">*Please Enter Username</div> -->
+
+        <input type="password" formControlName="password" class="form-control"
+        placeholder="Enter password"
+        [class.is-valid]="userLogin.controls.password.valid"
+        [class.is-invalid]="!userLogin.controls.password.valid && userLogin.controls.password.touched">        
+        <div class="invalid-feedback">*Please Enter password</div>
+        <!-- <div class="alert alert-danger" *ngIf="userLogin.controls.password.hasError('required') 
+        && userLogin.controls.password.touched">*Please Enter password</div> -->
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="!userLogin.valid">Submit</button>
+        <br>
+
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
+</div>
