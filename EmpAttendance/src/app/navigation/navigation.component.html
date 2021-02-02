@@ -1,0 +1,113 @@
+
+
+
+
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
+
+    <div id="topbar">
+      <div class="container">
+        <!-- <div class="social-links">
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="container">
+
+       <div class="logo float-left" *ngIf="(userservice.currentUser$|async)===null">      
+        <h3><a href="#" class="scrollto"><span>Employee Attendance System</span></a></h3>
+        
+      </div>      
+       <div class="row"> 
+      <div class="col-md-8">        
+          
+      <nav class="main-nav float-left d-none d-lg-block">
+        <ul *ngIf="userservice.currentUser$ | async">          
+          <li><a routerLink='/home'>Home</a></li>
+          <li><a routerLink='/employeelist'>Employee List</a></li>
+          <li><a routerLink='/addemployee'>Add Employee</a></li>        
+        </ul>
+      </nav><!-- .main-nav -->
+    </div>
+      <div class="col-md-4 float-right">
+        <div class="dropdown" *ngIf="userservice.currentUser$ | async" dropdown>
+          <a class="dropdown-toggle" dropdownToggle>Welcome User</a>
+            <div class="dropdown-menu mt-3" *dropdownMenu> 
+              <a class="dropdown-item">Edit Profile</a>
+              <div class="dropdown-divider"> </div>
+              <a class="dropdown-item" (click)="Logout()" >Logout</a>
+            </div> 
+        </div>
+      </div> 
+    </div>
+       
+
+          <form *ngIf="(userservice.currentUser$|async)===null" class="form-inline mt-2 mt-md-0" #LoginForm="ngForm" (ngSubmit)="login()">
+
+            <input type="text" name="Username" [(ngModel)]="model.Username"  class="form-control ml-1 mb-30" 
+        placeholder="Enter Username" >
+       
+
+        <input type="password" name="Password" [(ngModel)]="model.Password" class="form-control ml-1 mb-30"
+        placeholder="Enter password">
+       
+        
+        <button type="submit" class="btn btn-info my-2 my-sm-0 ml-1" >Login</button> 
+
+          </form>   
+       
+                                    
+      
+
+
+     
+        </div>
+
+ 
+     
+
+      
+    
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+          <!-- <h2>Rapid Solutions<br>for Your <span>Business!</span></h2> -->
+        
+        </div> 
+  
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <!-- <img src="img/intro-img.svg" alt="" class="img-fluid"> -->
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+        <router-outlet> </router-outlet>    
+      
+    
+</main>
+
+
+
+
+
+
+ 
+
+
+

@@ -11,25 +11,29 @@
       </div>
   
       <!-- Login Form -->
-      <form [formGroup]="userLogin" (ngSubmit)="Save(userLogin)">
-        <input type="text" formControlName="uname" class="form-control" 
+      <form #LoginForm="ngForm" (ngSubmit)="login()">
+      
+        <input type="text" name="Username" [(ngModel)]="model.Username"  class="form-control" 
         placeholder="Enter Username" 
-        [class.is-valid]="userLogin.controls.uname.valid"
-        [class.is-invalid]="!userLogin.controls.uname.valid && userLogin.controls.uname.touched">    
+        [class.is-valid]="Login.controls.Username.valid"
+        [class.is-invalid]="!Login.controls.Username.valid && Login.controls.Username.touched">    
         <div class="invalid-feedback">*Please Enter Username</div>
          <!-- <div class="alert alert-danger" *ngIf="userLogin.controls.uname.hasError('required') 
          && userLogin.controls.uname.touched">*Please Enter Username</div> -->
 
-        <input type="password" formControlName="password" class="form-control"
+        <input type="password" name="Password" [(ngModel)]="model.Password" class="form-control"
         placeholder="Enter password"
-        [class.is-valid]="userLogin.controls.password.valid"
-        [class.is-invalid]="!userLogin.controls.password.valid && userLogin.controls.password.touched">        
+        [class.is-valid]="Login.controls.Password.valid"
+        [class.is-invalid]="!Login.controls.Password.valid && Login.controls.Password.valid.touched">        
         <div class="invalid-feedback">*Please Enter password</div>
         <!-- <div class="alert alert-danger" *ngIf="userLogin.controls.password.hasError('required') 
         && userLogin.controls.password.touched">*Please Enter password</div> -->
+ 
         <br>
-        <button type="submit" class="btn btn-primary" [disabled]="!userLogin.valid">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
         <br>
+
+        <!-- <div>{{Login.value|json}}</div> [disabled]="!Login.valid" -->
 
       </form>
   
@@ -41,3 +45,4 @@
     </div>
   </div>
 </div>
+

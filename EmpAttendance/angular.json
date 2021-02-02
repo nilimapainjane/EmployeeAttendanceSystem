@@ -30,9 +30,19 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "src/styles.css"
+              "src/styles.css"             
+             
             ],
-            "scripts": []
+            "scripts": [    
+              "node_modules/jquery/dist/jquery.min.js", 
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",     
+              "src/assets/js/main.js",
+              "src/assets/jquery/jquery-migrate.min.js",
+              "src/assets/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/mobile-nav/mobile-nav.js",
+              "src/assets/wow/wow.min.js"
+
+            ]
           },
           "configurations": {
             "production": {

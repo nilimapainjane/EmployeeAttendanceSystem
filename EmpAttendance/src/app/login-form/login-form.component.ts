@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import{Validator,FormGroup,FormBuilder, Validators} from '@angular/forms';
+import { Ilogin } from '../shared/model/Ilogin';
 import {UserRegx} from '../shared/validations';
+import { Users } from '../shared/user.services';
+import {CanActivate,Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login-form',
@@ -9,28 +13,42 @@ import {UserRegx} from '../shared/validations';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {  
-public userLogin:any=FormGroup;
+public Login:any=FormGroup;
  apidata:any;
-  constructor(private fb:FormBuilder,private http:HttpClient) { }
+ Logindata:any;
+
+public loggedin:boolean=false;
+ model:any={};
+
+
+  constructor(private fb:FormBuilder,private http:HttpClient, private userservice:Users,private router:Router) { }
 
   ngOnInit(): void {
-    this.userLogin=this.fb.group({
-      'uname':['',[Validators.required,Validators.minLength(5)]],
-      'password':['',[Validators.required,UserRegx.password]]
+    this.Login=this.fb.group({     
+        'Username':['',[Validators.required,Validators.minLength(5)]],
+        'Password':['',[Validators.required,UserRegx.password]]          
     })
-    this.Getapidata();
+    //this.Getapidata();
  
   }
 
-  Getapidata()
+  login():void
   {
-    this.http.get('http://localhost:52348/weatherforecast').subscribe( response => { 
-      this.apidata= response; },
-      error=> { console.log(error); } )
+    console.log(this.model);
+    debugger;
+      // this.userservice.Login(this.model).subscribe((response:Ilogin) =>{
+        //console.log(response);
+        alert("logn successful")
+        this.router.navigate(['/employeelist']);
+       //this.loggedin=true;
+   // })
+      
   }
 
-  Save(data:any){
-    console.log(data);
-  }
+
+
+
+
+ 
 
 }

@@ -9,7 +9,16 @@ import { CustomDirective } from './custom.directives';
 import{FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { LoginFormComponent } from './login-form/login-form.component';
 import {HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HomeComponent } from './home/home.component';
+import {RouterModule} from '@angular/router'
+import {routes} from './app.routes';
+import { EmployeelistComponent } from './employeelist/employeelist.component';
+import { AddemployeeComponent } from './addemployee/addemployee.component';
+import{FilterPipe} from '../app/shared/filter.pipes';
+import {SearchPipe} from '../app/shared/search.pipe';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({
@@ -18,7 +27,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     CourseComponent,
     ContentPipes,
     CustomDirective,
-    LoginFormComponent
+    LoginFormComponent,
+    NavigationComponent,
+    HomeComponent,
+    EmployeelistComponent,
+    AddemployeeComponent,
+    FilterPipe,
+    SearchPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
