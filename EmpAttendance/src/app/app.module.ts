@@ -17,9 +17,10 @@ import {routes} from './app.routes';
 import { EmployeelistComponent } from './employeelist/employeelist.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import{FilterPipe} from '../app/shared/filter.pipes';
+import {SortByPipe} from '../app/shared/search.pipe';
 import {SearchPipe} from '../app/shared/search.pipe';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     EmployeelistComponent,
     AddemployeeComponent,
     FilterPipe,
-    SearchPipe
+    SearchPipe,
+    SortByPipe
     
   ],
   imports: [
@@ -44,7 +46,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot(
+      {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,      
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

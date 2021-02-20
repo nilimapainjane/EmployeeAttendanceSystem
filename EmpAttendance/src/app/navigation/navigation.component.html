@@ -8,19 +8,12 @@
   <header id="header">
 
     <div id="topbar">
-      <div class="container">
-        <!-- <div class="social-links">
-          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-        </div> -->
-      </div>
-    </div>
+     
+   
 
     <div class="container">
 
-       <div class="logo float-left" *ngIf="(userservice.currentUser$|async)===null">      
+       <div  *ngIf="(userservice.currentUser$|async)==null" class="logo float-left">      
         <h3><a href="#" class="scrollto"><span>Employee Attendance System</span></a></h3>
         
       </div>      
@@ -29,15 +22,16 @@
           
       <nav class="main-nav float-left d-none d-lg-block">
         <ul *ngIf="userservice.currentUser$ | async">          
-          <li><a routerLink='/home'>Home</a></li>
-          <li><a routerLink='/employeelist'>Employee List</a></li>
-          <li><a routerLink='/addemployee'>Add Employee</a></li>        
+          <li><a routerLink='/home' routerLinkActive='active'>Home</a></li>
+          <li><a routerLink='/employeelist' routerLinkActive='active'>Employee List</a></li>
+          <li><a routerLink='/addemployee'routerLinkActive='active'>Add Employee</a></li> 
+          <li><a routerLink='#'>Attendance</a></li>        
         </ul>
       </nav><!-- .main-nav -->
     </div>
       <div class="col-md-4 float-right">
         <div class="dropdown" *ngIf="userservice.currentUser$ | async" dropdown>
-          <a class="dropdown-toggle" dropdownToggle>Welcome User</a>
+          <a class="dropdown-toggle" dropdownToggle>Welcome {{user.Role}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu> 
               <a class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"> </div>
@@ -48,17 +42,20 @@
     </div>
        
 
-          <form *ngIf="(userservice.currentUser$|async)===null" class="form-inline mt-2 mt-md-0 float-right" #LoginForm="ngForm" (ngSubmit)="login()">
+          <form *ngIf="(userservice.currentUser$|async)==null" class="form-inline mt-2 mt-md-0 float-right" #LoginForm="ngForm" (ngSubmit)="login()">
 
-            <input type="text" name="Username" [(ngModel)]="model.Username"  class="form-control ml-1 mb-30" 
-        placeholder="Enter Username" >
+            <input type="text" required name="Username" [(ngModel)]="model.Username"  class="form-control ml-1 mb-30" 
+        placeholder="Enter Username" >            
        
 
-        <input type="password" name="Password" [(ngModel)]="model.Password" class="form-control ml-1 mb-30"
+        <input type="password" required name="Password" [(ngModel)]="model.Password" class="form-control ml-1 mb-30"
         placeholder="Enter password">
        
         
         <button type="submit" class="btn btn-info my-2 my-sm-0 ml-1" >Login</button> 
+        
+       
+        <div class="alert alert-danger">{{LoginForm.touched}}{{LoginForm.valid}}</div>
 
           </form>   
        
@@ -67,6 +64,8 @@
 
 
      
+        </div>
+
         </div>
 
  
@@ -96,21 +95,23 @@
   </section><!-- #intro -->
 
   <main id="main">
-    <div *ngIf="(userservice.currentUser$|async)===null">
+    <div *ngIf="(userservice.currentUser$|async)==null">
     <div class="container">  
       <div class="row">
-        <div class="col-md-5">
-          <img src="../../assets/images/cal.jfif" alt="">
+        <div class="col-md-5 mt-6">
+          <img src="../../assets/images/calender.jfif" alt="">
         </div>
 
         <div class="col-md-7">
-
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Aut dolor id. Sint aliquam consequatur ex ex labore. Et quis qui dolor nulla dolores neque. Aspernatur consectetur omnis numquam quaerat. Sed fugiat nisi. Officiis veniam molestiae. Et vel ut quidem alias veritatis repudiandae ut fugit. Est ut eligendi aspernatur nulla voluptates veniam iusto vel quisquam. Fugit ut maxime incidunt accusantium totam repellendus eum error. Et repudiandae eum iste qui et ut ab alias.</p>
+          
+         
         </div>
      
     </div>
     </div>
   </div>
-
 
 <div *ngIf="userservice.currentUser$|async">
   <router-outlet> </router-outlet>   

@@ -1,5 +1,16 @@
 
-export interface IuserLogin{
-    uname :string;
-    password:string;
+export interface IUser{
+    Id?:number;
+      Name?:string;
+     Username? :string;
+     Password?:string;
+      Role?:string;
+      // FrzInd:boolean;
+      // CreatedDate:Date;
+      // UpdatedDate :Date;
+      // CreatedBy:string;
+      // UpdatedBy :string;
+      // CreatedAt :string;
+      // UpdatedAt :string;
+      Empid?:number;
 }

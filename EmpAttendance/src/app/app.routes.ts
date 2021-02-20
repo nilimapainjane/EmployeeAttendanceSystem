@@ -16,5 +16,10 @@ export const routes:Route[]=[{
 {
     path:'addemployee',
     component:AddemployeeComponent
+},
+{
+
+   path:'**',
+   component:HomeComponent,pathMatch:'full'
 }
 ]
