@@ -48,7 +48,7 @@
     </div>
        
 
-          <form *ngIf="(userservice.currentUser$|async)===null" class="form-inline mt-2 mt-md-0" #LoginForm="ngForm" (ngSubmit)="login()">
+          <form *ngIf="(userservice.currentUser$|async)===null" class="form-inline mt-2 mt-md-0 float-right" #LoginForm="ngForm" (ngSubmit)="login()">
 
             <input type="text" name="Username" [(ngModel)]="model.Username"  class="form-control ml-1 mb-30" 
         placeholder="Enter Username" >
@@ -96,8 +96,26 @@
   </section><!-- #intro -->
 
   <main id="main">
+    <div *ngIf="(userservice.currentUser$|async)===null">
+    <div class="container">  
+      <div class="row">
+        <div class="col-md-5">
+          <img src="../../assets/images/cal.jfif" alt="">
+        </div>
 
-        <router-outlet> </router-outlet>    
+        <div class="col-md-7">
+
+        </div>
+     
+    </div>
+    </div>
+  </div>
+
+
+<div *ngIf="userservice.currentUser$|async">
+  <router-outlet> </router-outlet>   
+</div>
+         
       
     
 </main>
