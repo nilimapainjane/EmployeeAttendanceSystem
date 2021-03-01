@@ -24,14 +24,15 @@
         <ul *ngIf="userservice.currentUser$ | async">          
           <li><a routerLink='/home' routerLinkActive='active'>Home</a></li>
           <li><a routerLink='/employeelist' routerLinkActive='active'>Employee List</a></li>
-          <li><a routerLink='/addemployee'routerLinkActive='active'>Add Employee</a></li> 
-          <li><a routerLink='#'>Attendance</a></li>        
+          <li><a routerLink='/addemployee'routerLinkActive='active'>Add Employee</a></li>
+          <li><a routerLink='/attendancelist' routerLinkActive='active'>Attendance List</a></li> 
+          <li><a routerLink='/attendance' routerLinkActive='active'>Attendance</a></li>        
         </ul>
       </nav><!-- .main-nav -->
     </div>
       <div class="col-md-4 float-right">
-        <div class="dropdown" *ngIf="userservice.currentUser$ | async" dropdown>
-          <a class="dropdown-toggle" dropdownToggle>Welcome {{user.Role}}</a>
+        <div class="dropdown" *ngIf="(userservice.currentUser$ | async) as user" dropdown>
+          <a class="dropdown-toggle" dropdownToggle>Welcome  {{Uname}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu> 
               <a class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"> </div>

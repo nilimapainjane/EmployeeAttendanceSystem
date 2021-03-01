@@ -19,7 +19,7 @@ export class EmployeelistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-debugger;
+
     this.userservice.GetAllEmployee()
     .subscribe(data=>{this.Allempdata=data;
       console.log(data);

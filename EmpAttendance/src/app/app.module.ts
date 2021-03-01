@@ -21,6 +21,9 @@ import {SortByPipe} from '../app/shared/search.pipe';
 import {SearchPipe} from '../app/shared/search.pipe';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {ToastrModule} from 'ngx-toastr';
+import { AttendancelistComponent } from './attendancelist/attendancelist.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import {ToastrModule} from 'ngx-toastr';
     AddemployeeComponent,
     FilterPipe,
     SearchPipe,
-    SortByPipe
+    SortByPipe,
+    AttendancelistComponent,
+    AttendanceComponent
     
   ],
   imports: [
@@ -44,7 +49,7 @@ import {ToastrModule} from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     RouterModule.forRoot(routes),
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot(
@@ -53,9 +58,12 @@ import {ToastrModule} from 'ngx-toastr';
         positionClass: 'toast-bottom-right',
         preventDuplicates: true,      
       }
-    )
+    ),
+  
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

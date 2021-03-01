@@ -1,0 +1,45 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <form>
+            
+<div class="card">
+    <div class="card-header bg-primary text-white">Today's Attendance</div>
+    <div class="card-body"> 
+
+        <div class="col-xs-2">
+                <label for="ex1">Todays Attendance {{myDate | date: 'dd/MM/yyyy' }}</label>               
+        </div>
+
+<div class="col-xs-2">
+ <p>Hello {{Uname}}</p>
+ <div class="logindiv">  <label>Login 
+    <span class="fa fa-circle" 
+    [ngClass]="{
+        'absent':!absent ,
+        'present':absent }"
+    (click)="attendance()"></span></label> </div>
+
+<label>Login Time- {{myDate   | date: "h:mm:ss a"}}</label><br>
+<label>Logout Time- {{dt | date:"h:mm:ss a"}}  </label><br>
+
+
+
+</div>
+       
+        
+      
+                 
+    </div>
+   
+
+</div>
+</form>
+        </div>
+    </div>
+</div>
+
+
+

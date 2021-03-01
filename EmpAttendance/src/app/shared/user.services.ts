@@ -19,6 +19,7 @@ export class Users{
     public userEndpoint:string ="http://localhost:52348/api/Employee/Login";
     //public allEmpEndpoint:string="http://localhost:52348/api/Employee/GetEmployees";
     public allEmpEndpoint:string="https://localhost:44328/api/Employee/GetEmployee";
+    public EmpAttendancelist:string="https://localhost:44328/api/Employee/GetTodayAttendance";
     public header:HttpHeaders;
      private currctUserSourse= new ReplaySubject<IUser>(1);
     currentUser$ = this.currctUserSourse.asObservable(); 
@@ -70,9 +71,14 @@ export class Users{
     }
 
     GetAllEmployee():Observable<IEmployee[]>
+    {        
+        return this.http.get<IEmployee[]>(this.allEmpEndpoint);
+    }
+
+    GetEmployeeAttendance():Observable<IEmployee[]> 
     {
         debugger;
-        return this.http.get<IEmployee[]>(this.allEmpEndpoint);
+        return this.http.get<IEmployee[]>(this.EmpAttendancelist);
     }
 
 
