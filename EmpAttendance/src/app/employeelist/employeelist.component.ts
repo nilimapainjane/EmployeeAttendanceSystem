@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{Users} from '../shared/user.services';
-
-
+import{SearchPipe,SortByPipe} from '../shared/search.pipe'
 
 @Component({
   selector: 'app-employeelist',
@@ -13,16 +12,17 @@ export class EmployeelistComponent implements OnInit {
   public Allempdata:any;
   //public model=new Search();
  
-  firstName="";
+  FirstName:any;
   aa:boolean=false;
   constructor( private userservice:Users) { 
 
   }
 
   ngOnInit(): void {
-debugger;
+
     this.userservice.GetAllEmployee()
     .subscribe(data=>{this.Allempdata=data;
+      console.log(data);
     });
 
   }

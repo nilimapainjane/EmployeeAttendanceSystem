@@ -17,8 +17,12 @@ import {routes} from './app.routes';
 import { EmployeelistComponent } from './employeelist/employeelist.component';
 import { AddemployeeComponent } from './addemployee/addemployee.component';
 import{FilterPipe} from '../app/shared/filter.pipes';
+import {SortByPipe} from '../app/shared/search.pipe';
 import {SearchPipe} from '../app/shared/search.pipe';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {ToastrModule} from 'ngx-toastr';
+import { AttendancelistComponent } from './attendancelist/attendancelist.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 
 @NgModule({
@@ -33,7 +37,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     EmployeelistComponent,
     AddemployeeComponent,
     FilterPipe,
-    SearchPipe
+    SearchPipe,
+    SortByPipe,
+    AttendancelistComponent,
+    AttendanceComponent
     
   ],
   imports: [
@@ -42,11 +49,21 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     RouterModule.forRoot(routes),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot(
+      {
+        timeOut: 10000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,      
+      }
+    ),
+  
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

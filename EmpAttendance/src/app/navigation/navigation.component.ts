@@ -6,6 +6,8 @@ import {UserRegx} from '../shared/validations';
 import { Users } from '../shared/user.services';
 import {CanActivate,Router} from '@angular/router';
 import { Observable } from 'rxjs';
+import {IUser} from '../shared/model/users';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-navigation',
@@ -14,12 +16,26 @@ import { Observable } from 'rxjs';
 })
 export class NavigationComponent implements OnInit {
   public Login:any=FormGroup;
-
- apidata:any;
  Logindata:any;
+ user:IUser={}; 
  model:any={};
+ Userdata!:Object;
+ dataarray:any;
+ Uname:any;
+ Role:any;
 
-  constructor(private fb:FormBuilder,private http:HttpClient, public userservice:Users,private router:Router) { }
+  constructor(private fb:FormBuilder,private http:HttpClient, public userservice:Users,
+    private router:Router,private toast:ToastrService) {
+      this.user =JSON.parse(localStorage.getItem('user')!); 
+      console.log(this.user);
+      this.dataarray=this.user;         
+     
+      for (let x in this.dataarray) {
+           this.Logindata= this.dataarray[x];
+        }
+        this.Uname=this.Logindata.Name;
+        this.Role=this.Logindata.Role;
+     }
 
   ngOnInit(): void {
     this.Login=this.fb.group({     
@@ -30,23 +46,48 @@ export class NavigationComponent implements OnInit {
 
   login():void
   {
-    console.log(this.model);
-   
-       this.userservice.Login(this.model).subscribe((response:any) =>{
-        console.log(response);       
-          alert("login successful")
-          this.router.navigate(['/home']);
-           
+    
+      
+      let valid:boolean=false;
+    
+      var size=Object.keys(this.model).length;      
+         if(size>0)
+          {
+              valid=true;
+          }       
+
+     if(valid)
+      {
+        this.userservice.Login(this.model).subscribe((response:IUser) =>{            
+         debugger;  
+          
        
-   },error =>{ console.log(error);}
-   )
+          if(response!=null)
+          {
+             this.toast.success("login successful");         
+        }   
+          else{
+            this.toast.error("login not successful"); 
+          } 
+           
+      },error =>{ 
+        this.toast.error(error.error);    
+        
+      })}
+
+      else
+      {
+        this.toast.error("Please enter username and password");
+      }
+      
       
   }
 
   Logout():void
-  {
+  {    
     this.userservice.Logout();
-   
+    this.router.navigateByUrl('/');
+    
   }
 
 

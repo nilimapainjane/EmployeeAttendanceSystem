@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ilogin } from './shared/model/Ilogin';
+import { IUser } from './shared/model/users';
 import { Users } from './shared/user.services';
 
 @Component({
@@ -17,14 +18,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit()
   {
-    debugger;
+  
     this.SetCurrentUser();
 
   }
 
   SetCurrentUser()
   {
-    const user:Ilogin=JSON.parse(localStorage.getItem('user')!);
+    const user:IUser=JSON.parse(localStorage.getItem('user')!);
     this.userService.SetCurrentUser(user);   
   }
 }

@@ -1,1 +1,58 @@
-<p>addemployee works!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        
+            
+<div class="card">
+    <div class="card-header bg-primary text-white">Add Employee</div>
+    <div class="card-body"> 
+
+        <div class="col-xs-2">
+                <label for="ex1"></label>               
+        </div>
+
+
+<form #AddEmployeeForm="ngForm" (ngSubmit)="AddEmployee()" autocomplete="off">
+
+<div class="form-group">
+<input type="text" class="form-control" name="FirstName" placeholder="Enter Firstname"[(ngModel)]="model.FirstName">
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="MiddleName" placeholder="Enter MiddleName"[(ngModel)]="model.MiddleName">
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="LastName" placeholder="Enter LastName"[(ngModel)]="model.LastName">
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="Address" placeholder="Enter Address"[(ngModel)]="model.Address">
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="MobileNo" placeholder="Enter MobileNo"[(ngModel)]="model.MobileNo">
+</div>
+
+<div class="form-group">
+    <input type="date" class="form-control" name="Dbo" placeholder="Enter Dbo"[(ngModel)]="model.Dbo">
+   
+</div>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="SkypeId" placeholder="Enter SkypeId"[(ngModel)]="model.SkypeId">
+</div>
+
+<div class="form-group">
+<button type="submit" class="btn btn-success my-2 my-sm-0">Save</button> 
+<button type="button" class="btn btn-default my-2 my-sm-0" (click)="Cancel()">Cancel</button> 
+</div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+

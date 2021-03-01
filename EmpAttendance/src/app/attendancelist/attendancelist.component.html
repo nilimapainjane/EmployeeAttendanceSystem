@@ -1,0 +1,58 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <form>
+            
+<div class="card">
+    <div class="card-header bg-primary text-white">Today's Attendance List</div>
+    <div class="card-body"> 
+
+        <div class="col-xs-2">
+                <label for="ex1">{{todayDate | date: 'dd/MM/yyyy' }}  </label>               
+        </div>
+        
+        <div class="form-group">                              
+                  <input type="text" name="FirstName" [(ngModel)]="FirstName" class="form-control col-sm-2" placeholder="Serach any fields"/>
+                       
+        </div>
+            <div class="table-responsive">          
+                    <table class="table">
+                      <thead>
+                        <tr>
+                         <th>No.</th>                      
+                          <th>EmpName</th>
+                          <th>AttdanceDate</th>
+                          <th>IsPresent</th>
+                          <th>InTime</th>
+                          <th>OutTime</th>                                
+     
+                        </tr>
+                      </thead>
+                      <tbody>
+                         
+                     
+                        <tr *ngFor="let data of EmpAttenanceData | Empfilter: FirstName let i = index">
+                          <th scope="row">{{i+1}}</th>                      
+                      
+                          <td>{{data.EmpName}}</td>
+                          <td>{{data.AttdanceDate}}</td>
+                          <td>{{data.IsPresent}} <i class="fa fa-circle" aria-hidden="true"></i></td>
+                          <td>{{data.InTime}}</td>
+                          <td>{{data.OutTime}}</td>
+                         
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>      
+    </div>
+   
+
+</div>
+</form>
+        </div>
+    </div>
+</div>
+
+
